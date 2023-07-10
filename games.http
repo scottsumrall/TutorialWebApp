@@ -37,3 +37,7 @@ content-type: application/json
     "price": 19.99,
     "releaseDate": "2011-11-18"
 }
+
+###
+DELETE {{baseUrl}}/games/2
+

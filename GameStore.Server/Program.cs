@@ -78,4 +78,23 @@ group.MapPut("/{id}", (int id, Game updatedGame) =>
     return Results.NoContent();
 });
 
+group.MapDelete("/{id}", (int id) =>
+{
+    Game? game = games.Find(game => game.Id == id);
+
+    if (game is null)
+    {
+        // Return not found or no content
+        // If the game cant be found, then the client intent to delete is already applicable, so no content works
+        // Not found might be easier for debug though.
+
+        return Results.NotFound();
+        //return Results.NoContent();
+
+    }
+    games.Remove(game);
+
+    return Results.NoContent();
+});
+
 app.Run();
