@@ -2,9 +2,16 @@
 
 namespace TutorialWebApp
 {
-	public static class GameClient
+	public class GameClient
 	{
-		private static readonly List<Game> games = new()
+		private readonly HttpClient httpClient;
+
+		public GameClient(HttpClient httpClient)
+		{
+			this.httpClient = httpClient;
+		}
+
+		private readonly List<Game> games = new()
 		{
 			new Game()
 			{
@@ -32,23 +39,23 @@ namespace TutorialWebApp
 			}
 		};
 
-		public static Game[] GetGames()
+		public Game[] GetGames()
 		{
 			return games.ToArray();
 		}
 
-		public static void AddGame(Game game)
+		public void AddGame(Game game)
 		{
 			game.Id = games.Max(game => game.Id) + 1;
 			games.Add(game);
 		}
 
-		public static Game GetGame(int id)
+		public Game GetGame(int id)
 		{
 			return games.Find(game => game.Id == id) ?? throw new Exception("Could not find game!");
 		}
 
-		public static void UpdateGame(Game updatedGame)
+		public void UpdateGame(Game updatedGame)
 		{
 			Game existingGame = GetGame(updatedGame.Id);
 			existingGame.Name = updatedGame.Name;
@@ -57,7 +64,7 @@ namespace TutorialWebApp
 			existingGame.ReleaseDate = updatedGame.ReleaseDate;
 		}
 
-		public static void DeleteGame(int id)
+		public void DeleteGame(int id)
 		{
 			Game game = GetGame(id);
 			games.Remove(game);
