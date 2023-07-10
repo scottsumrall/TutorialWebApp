@@ -3,4 +3,15 @@
 GET {{baseUrl}}/games
 
 ###
-GET {{baseUrl}}/games/2
+GET {{baseUrl}}/games/4
+
+###
+POST {{baseUrl}}/games
+content-type: application/json
+
+{
+    "name": "Minecraft",
+    "genre": "Kids and Family",
+    "price": 19.99,
+    "releaseDate": "2011-11-18"
+}

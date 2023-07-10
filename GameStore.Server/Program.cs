@@ -48,6 +48,14 @@ group.MapGet("/{id}", (int id) =>
 
     //if game is found, return Ok results object and pass in the game object
     return Results.Ok(game);
+}).WithName("GetGame");
+
+group.MapPost("/", (Game game) =>
+{
+    game.Id = games.Max(game => game.Id) + 1;
+    games.Add(game);
+
+    return Results.CreatedAtRoute("GetGame", new { id = game.Id }, game);
 });
 
 app.Run();
