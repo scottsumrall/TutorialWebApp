@@ -31,8 +31,12 @@ List<Game> games = new()
 var builder = WebApplication.CreateBuilder(args);
 var app = builder.Build();
 
+var group = app.MapGroup("/games");
+
+group.MapGet("/", () => games);
+
 // GET /games
-app.MapGet("/games/{id}", (int id) =>
+group.MapGet("/{id}", (int id) =>
 {
     Game? game = games.Find(game => game.Id == id);
 

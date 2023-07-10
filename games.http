@@ -1,4 +1,4 @@
 GET https://localhost:7290/games
 
 ###
-GET https://localhost:7290/games/4
+GET https://localhost:7290/games/2
