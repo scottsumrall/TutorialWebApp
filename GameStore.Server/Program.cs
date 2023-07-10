@@ -32,6 +32,18 @@ var builder = WebApplication.CreateBuilder(args);
 var app = builder.Build();
 
 // GET /games
-app.MapGet("/games", () => games);
+app.MapGet("/games/{id}", (int id) =>
+{
+    Game? game = games.Find(game => game.Id == id);
+
+    //if game is null, return not found results object
+    if (game is null)
+    {
+        return Results.NotFound(0);
+    }
+
+    //if game is found, return Ok results object and pass in the game object
+    return Results.Ok(game);
+});
 
 app.Run();
