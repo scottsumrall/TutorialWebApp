@@ -21,7 +21,7 @@ PUT {{baseUrl}}/games/1
 content-type: application/json
 
 {
-    "name": "Street Fighter II Turbo",
+    "name": "",
     "genre": "Fighting",
     "price": 9.99,
     "releaseDate": "1991-02-01T00:00:00"
