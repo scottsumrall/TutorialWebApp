@@ -1,0 +1,43 @@
+@baseUrl = https://localhost:7290
+
+GET {{baseUrl}}/games
+
+###
+GET {{baseUrl}}/games/4
+
+###
+POST {{baseUrl}}/games
+content-type: application/json
+
+{
+    "name": "Minecraft",
+    "genre": "Kids and Family",
+    "price": 19.99,
+    "releaseDate": "2011-11-18"
+}
+
+###
+PUT {{baseUrl}}/games/1
+content-type: application/json
+
+{
+    "name": "",
+    "genre": "Fighting",
+    "price": 9.99,
+    "releaseDate": "1991-02-01T00:00:00"
+}
+
+###
+PUT {{baseUrl}}/games/4
+content-type: application/json
+
+{
+    "name": "Minecraft",
+    "genre": "Kids and Family",
+    "price": 19.99,
+    "releaseDate": "2011-11-18"
+}
+
+###
+DELETE {{baseUrl}}/games/2
+
