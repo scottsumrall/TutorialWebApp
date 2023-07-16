@@ -1,3 +1,4 @@
+using GameStore.Server.NewFolder;
 using TutorialWebApp.Models;
 
 List<Game> games = new()
@@ -38,6 +39,9 @@ builder.Services.AddCors(options => options.AddDefaultPolicy(builder =>
 }));
 
 var conString = builder.Configuration.GetConnectionString("GameStoreContext");
+
+// Regester the dbContext (GameStoreContext) for dependency injection
+builder.Services.AddSqlServer<GameStoreContext>(conString);
 var app = builder.Build();
 
 app.UseCors();
