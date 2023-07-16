@@ -10,6 +10,7 @@ namespace GameStore.Server.NewFolder
             
         }
 
+        //create a set that can translate instances of game into databse queries
         public DbSet<Game> Games => Set<Game>();
     }
 }
