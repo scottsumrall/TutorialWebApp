@@ -6,6 +6,7 @@ namespace TutorialWebApp.Models
     {
         public int Id { get; set; }
 
+        // requirements are used in migration statements
         [Required]
         [StringLength(50)]
         public required string Name { get; set; }
