@@ -34,7 +34,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddCors(options => options.AddDefaultPolicy(builder =>
 {
-	builder.WithOrigins("https://localhost:7232")
+	builder.WithOrigins("http://localhost:5124")
 					.AllowAnyHeader()
 					.AllowAnyMethod();
 }));
@@ -43,7 +43,10 @@ var conString = builder.Configuration.GetConnectionString("GameStoreContext");
 
 // Regester the dbContext (GameStoreContext) for dependency injection
 builder.Services.AddSqlServer<GameStoreContext>(conString);
+
 var app = builder.Build();
+
+app.UseCors();
 
 var group = app.MapGroup("/games")
 	.WithParameterValidation();
